@@ -4,13 +4,14 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <meta name="viewport"  content="width=device-width, initial-scale=1">
-
-        {% block stylesheets %}
         <!-- Font Awesome -->
         <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
         <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/fontawesome.min.css') }}">
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        {% block stylesheets %}
+
+        {% endblock %}
         <!-- Tempusdominus Bbootstrap 4 -->
         <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
         <!-- iCheck -->
@@ -27,7 +28,7 @@
         <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.css') }}">
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-        {% endblock %}
+
 
 
     </head>
@@ -37,28 +38,29 @@
             {{ include('layouts/fix_content/_nav.html.twig') }}
             {{ include('layouts/fix_content/_aside.html.twig') }}
 
-            <!-- Content Wrapper. Contains page content -->
+            <!-- Content Wrapper. Contains page header_content -->
             <div class="content-wrapper">
                 {% block body %}
 
                 {% endblock %}
             </div>
-            <!-- /.content-wrapper -->
+            <!-- /.header_content-wrapper -->
 
             {{ include('layouts/fix_content/_footer.html.twig') }}
         </div>
         <!-- ./wrapper -->
 
-
+        <!-- jQuery -->
+        <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+        <!-- Bootstrap 4 -->
+        <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         {% block javascripts %}
-            <!-- jQuery -->
-            <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-            <!-- Bootstrap 4 -->
-            <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-            <!-- AdminLTE App -->
-            <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
-            <!-- AdminLTE for demo purposes -->
-            <script src="{{ asset('dist/js/demo.js') }}"></script>
+
         {% endblock %}
+        <!-- AdminLTE App -->
+        <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="{{ asset('dist/js/demo.js') }}"></script>
+
     </body>
 </html>
