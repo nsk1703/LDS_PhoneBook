@@ -117,13 +117,14 @@ Trait Timestampable
         return $this;
     }
 
-    /*
+    /**
      * @ORM\PrePersist
      */
     public function createTimestamps()
     {
-        if ($this->getCreatedAt() === null){
-            $this->setcreatedAt(new \DateTimeImmutable());
+        if ($this->getCreatedAt() === null)
+        {
+            $this->setCreatedAt(new \DateTimeImmutable());
         }
 
     }

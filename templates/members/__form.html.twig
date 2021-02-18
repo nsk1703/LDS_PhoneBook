@@ -1,0 +1,6 @@
+{{ form_start(form) }}
+
+    {{ form_widget(form) }}
+
+<input class="btn btn-primary btn-block" type="submit" value="{{ submitButtonText|default('Create a Member') }}" formnovalidate>
+{{ form_end(form) }}

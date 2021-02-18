@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Adding of new members{% endblock %}
+
+{% block body %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        {{ include('layouts/header_content/header_form_content.html.twig') }}
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <!-- general form elements disabled -->
+                    <div class="card card-primary">
+                        <div class="card-header"  style="text-align: center">
+                            <h3 class="card-title">Adding of new member</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            {{ form_start(form) }}
+                                {{ form_widget(form) }}
+                            <input class="btn btn-primary btn-block" type="submit" value="{{ submitButtonText|default('Add a member') }}" formnovalidate>
+                            {{ form_end(form) }}
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!--/.col (right) -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+{% endblock %}

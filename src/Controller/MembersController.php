@@ -41,7 +41,7 @@ class MembersController extends AbstractController
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
         $member = new Members();
-        $form = $this->createForm(Members::class, $member);
+        $form = $this->createForm(MembersType::class, $member);
 
         $form->handleRequest($request);
 
