@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Member's list{% endblock %}
+
+{% block body %}
+    {{ include('layouts/header_content/header_list_content.html.twig') }}
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Information's List</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>LastName</th>
+                                    <th>FirstName</th>
+                                    <th>Phone Number</th>
+                                    <th>Profession</th>
+                                    <th>Email</th>
+                                    <th>InsertAt</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for member in members %}
+                                        <tr>
+                                            <td>{{ member.lastName }}</td>
+                                            <td><a href="{{ path('app_member_show', { id: member.id}) }}">{{ member.firstName }}</a></td>
+                                            <td>{{ member.phoneNumber }}</td>
+                                            <td>{{ member.profession }}</td>
+                                            <td>{{ member.email }}</td>
+                                            <td>{{ member.createdAt|date("Y-m-d H:i:s") }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>LastName</th>
+                                    <th>FirstName</th>
+                                    <th>Phone Number</th>
+                                    <th>Profession</th>
+                                    <th>Email</th>
+                                    <th>InsertAt</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+{% endblock %}

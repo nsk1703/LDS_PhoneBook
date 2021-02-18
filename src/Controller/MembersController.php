@@ -29,7 +29,7 @@ class MembersController extends AbstractController
     public function listMembers(MembersRepository $membersRepository): Response
     {
         $members = $membersRepository->findAll();
-        return $this->render("members/list_members.html.twig", compact($members));
+        return $this->render("members/list_members.html.twig", ['members' => $members]);
     }
 
     /**
@@ -93,13 +93,12 @@ class MembersController extends AbstractController
 
     /**
      * @Route("/member/{id<[0-9]+>}", name="app_member_show", methods={"GET"})
-     * @param Members $members
+     * @param Members $member
      * @return Response
      */
-    public function show(Members $members): Response
+    public function show(Members $member): Response
     {
-
-        return $this->render('members/show.html.twig', compact($members));
+        return $this->render('members/show.html.twig', ['member' => $member]);
     }
 
     /**
