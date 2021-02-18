@@ -39,6 +39,11 @@ Trait Timestampable
      */
     private $createdAt;
 
+    /**
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     */
+    private $updatedAt;
+
 
     public function getId(): ?int
     {
@@ -117,8 +122,21 @@ Trait Timestampable
         return $this;
     }
 
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
     /**
      * @ORM\PrePersist
+     * @ORM\PreUpdate
      */
     public function createTimestamps()
     {
@@ -126,6 +144,7 @@ Trait Timestampable
         {
             $this->setCreatedAt(new \DateTimeImmutable());
         }
+        $this->setUpdatedAt(new \DateTimeImmutable());
 
     }
 }
