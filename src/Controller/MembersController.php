@@ -15,10 +15,13 @@ class MembersController extends AbstractController
 {
     /**
      * @Route("/", name="app_home")
+     * @param MembersRepository $membersRepository
+     * @return Response
      */
-    public function index(): Response
+    public function index(MembersRepository $membersRepository): Response
     {
-        return $this->render('members/index.html.twig');
+        $members = $membersRepository->findAll();
+        return $this->render('members/index.html.twig', ['members' => $members]);
     }
 
     /**
