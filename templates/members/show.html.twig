@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Member's information {% endblock %}
+
+
+{% block body %}
+    {{ include('layouts/header_content/header_show_content.html.twig') }}
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card card-primary mt-5">
+                        <div class="card-header">
+                            <h3 class="card-title">Information's of {{ member.firstName }} {{ member.lastName }}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <strong>Complete name</strong>
+                                    <p>{{ member.firstname }} {{ member.lastName }}</p>
+                                    <strong>Phone Number</strong>
+                                    <p>{{ member.phoneNumber }}</p>
+                                    <strong>Profession</strong>
+                                    <p>{{ member.profession }}</p>
+                                    <strong>Email</strong>
+                                    <p>{{ member.email }}</p>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row-->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="btn btn-outline-primary" style="float:right;"><a href="{{ path('app_member_edit', {id: member.id}) }}" style="text-decoration: none">Update</a></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="btn btn-outline-danger" style="float:left;"><a href="#" style="text-decoration: none">Delete</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row-->
+        </div><!-- /.container-->
+    </section>
+    <!-- /.content -->
+{% endblock %}
