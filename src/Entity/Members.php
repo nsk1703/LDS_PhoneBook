@@ -29,6 +29,8 @@ class Members
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
      * @Vich\UploadableField(mapping="member_image", fileNameProperty="imageName")
+     * @Assert\NotNull(message="Please upload a file")
+     * @Assert\Image(maxSize="5M")
      *
      * @var File|null
      */
