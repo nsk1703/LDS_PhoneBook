@@ -36,16 +36,6 @@ class MembersController extends AbstractController
     }
 
     /**
-     * @Route("/member/{id<[0-9]+>}", name="app_member_show", methods={"GET"})
-     * @param Members $member
-     * @return Response
-     */
-    public function show(Members $member): Response
-    {
-        return $this->render('members/show.html.twig', ['member' => $member]);
-    }
-
-    /**
      * @Route("/member/create", name="app_member_create", methods={"GET", "POST"})
      * @param Request $request
      * @param EntityManagerInterface $entityManager
@@ -72,13 +62,22 @@ class MembersController extends AbstractController
         return $this->render("members/create.html.twig", ['form' => $form->createView()]);
     }
 
+    /**
+     * @Route("/member/{id<[0-9]+>}", name="app_member_show", methods={"GET"})
+     * @param Members $member
+     * @return Response
+     */
+    public function show(Members $member): Response
+    {
+        return $this->render('members/show.html.twig', ['member' => $member]);
+    }
 
     /**
-     * @Route("/member/{id<[0-9]+>}", name="app_member_edit", methods={"GET", "PUT"})
      * @param Request $request
      * @param Members $member
      * @param EntityManagerInterface $entityManager
      * @return Response
+     * @Route("/member/{id<[0-9]+>}/edit", name="app_member_edit", methods={"GET", "PUT"})
      */
     public function edit(Request $request, Members $member, EntityManagerInterface $entityManager):Response
     {
@@ -96,12 +95,10 @@ class MembersController extends AbstractController
 
         }
 
-        return $this->render('members/edit.html.twig',
-            [
+        return $this->render('members/edit.html.twig',[
                 'member' => $member,
-                'form' => $form
-            ]
-        );
+                'form' => $form->createView()
+        ]);
     }
 
     /**
