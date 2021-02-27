@@ -16,9 +16,9 @@ class MembersType extends AbstractType
             ->add('imageFile', VichImageType::class, [
                 'label' => 'image (JPG or PNG file)',
                 'required' => false,
-                'allow_delete' => true,
+                'allow_delete' => true, //Autorisation de la suppression de l'image lors de la modification
                 'download_uri' => false,
-//                'imagine_pattern' => 'squared_thumbnail_small',
+               'imagine_pattern' => 'squared_thumbnail_small',
             ])
             ->add('first_name')
             ->add('last_name')
