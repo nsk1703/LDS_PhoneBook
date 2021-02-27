@@ -35,7 +35,6 @@ Trait Timestampable
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank
      */
     private $email;
 
