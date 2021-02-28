@@ -31,10 +31,13 @@
         <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.css') }}">
         <!-- Google Font: Source Sans Pro -->
 {#        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">#}
-
-
-
     </head>
+
+    <style>
+        tr[data-href] {
+            cursor: pointer;
+        }
+    </style>
     <body class="hold-transition sidebar-mini sidebar-collapse">
         <!-- Site wrapper -->
         <div class="wrapper">
@@ -85,6 +88,18 @@
                     "autoWidth": false,
                     "responsive": true,
                 });
+            });
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const rows = document.querySelectorAll('tr[data-href]');
+                
+                rows.forEach(row => {
+                    row.addEventListener('click', () => {
+                        window.location.href = row.dataset.href;
+                    })
+                })
+
+
             });
         </script>
 

@@ -29,9 +29,9 @@
                                 </thead>
                                 <tbody>
                                     {% for member in members %}
-                                        <tr>
+                                        <tr data-href="{{ path('app_member_show', { id: member.id}) }}">
                                             <td>{{ member.lastName }}</td>
-                                            <td><a href="{{ path('app_member_show', { id: member.id}) }}">{{ member.firstName }}</a></td>
+                                            <td>{{ member.firstName }}</td>
                                             <td>{{ member.phoneNumber }}</td>
                                             <td>{{ member.profession }}</td>
                                             <td>{{ member.email }}</td>
