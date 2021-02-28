@@ -19,9 +19,8 @@
                             <h3>Members</h3>
                             {% if(members|length > 0) %}
                                 <p>Numbers: {{ members|length }} </p>
-                                <p><a href="{{ path('app_member_create') }}">Add a new member</a></p>
                             {% else %}
-                                <p><a href="{{ path('app_member_create') }}">Add the first Member</a></p>
+                                <p><a href="{{ path('app_member_create') }}" style="color: inherit !important;">Add the first Member</a></p>
                             {% endif %}
                         </div>
                         <div class="icon">
