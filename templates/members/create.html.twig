@@ -19,10 +19,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            {{ form_start(form) }}
-                                {{ form_widget(form) }}
-                            <input class="btn btn-primary btn-block" type="submit" value="{{ submitButtonText|default('Add a member') }}" formnovalidate>
-                            {{ form_end(form) }}
+                          {{ include('members/__form.html.twig') }}
                         </div>
                         <!-- /.card-body -->
                     </div>
