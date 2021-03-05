@@ -106,6 +106,7 @@ class MembersController extends AbstractController
      * @param Members $member
      * @param EntityManagerInterface $entityManager
      * @return Response
+     * @Route("/member/{id<[0-9]+>}/delete", name="app_member_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Members $member, EntityManagerInterface $entityManager): Response
     {
@@ -114,7 +115,7 @@ class MembersController extends AbstractController
             $entityManager->remove($member);
             $entityManager->flush();
 
-            $this->addFlash('info', 'Pin successfully deleted!!');
+            $this->addFlash('info', 'Member successfully deleted!!');
         }
 
         return $this->redirectToRoute('app_member_list');

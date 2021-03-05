@@ -24,6 +24,7 @@ class MembersType extends AbstractType
             ->add('last_name')
             ->add('phone_number')
             ->add('profession')
+            ->add('localisation')
             ->add('email')
         ;
     }

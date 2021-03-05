@@ -28,6 +28,8 @@
                                     <p>{{ member.phoneNumber }}</p>
                                     <strong>Profession</strong>
                                     <p>{{ member.profession }}</p>
+                                    <strong>Localisation</strong>
+                                    <p>{{ member.localisation }}</p>
                                     <strong>Email</strong>
                                     <p>{{ member.email }}</p>
                                 </div>
@@ -36,10 +38,15 @@
                             <!-- /.row-->
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <p class="btn btn-outline-primary" style="float:right;"><a href="{{ path('app_member_edit', {id: member.id}) }}" style="color: inherit!important;">Update</a></p>
+                                    <a href="{{ path('app_member_edit', {id: member.id}) }}" style=" float:right;" class="btn btn-outline-primary">Update</a>
                                 </div>
                                 <div class="col-md-6">
-                                    <p class="btn btn-outline-danger" style="float:left;"><a href="#" style="color: inherit !important;">Delete</a></p>
+                                    <a href="#" class="btn btn-outline-danger" style="float:left;"onclick="event.preventDefault(); confirm('Are you sure?') && document.querySelector('#js-member-delete-form').submit();">Delete</a>
+
+                                    <form id="js-member-delete-form" action="{{path('app_member_delete', {id: member.id})}}" method="POST" style="display:none">
+                                        <input type="hidden" name="csrf_token" value="{{csrf_token('member_deletion_' ~ member.id)}}">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                    </form>
                                 </div>
                             </div>
                         </div>

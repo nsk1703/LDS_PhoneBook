@@ -42,6 +42,11 @@ class Members
      */
     private $imageName;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $localisation;
+
     public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
@@ -66,6 +71,18 @@ class Members
     public function setImageName(?string $imageName): self
     {
         $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    public function getLocalisation(): ?string
+    {
+        return $this->localisation;
+    }
+
+    public function setLocalisation(string $localisation): self
+    {
+        $this->localisation = $localisation;
 
         return $this;
     }
