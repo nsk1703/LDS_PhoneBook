@@ -31,7 +31,7 @@ Trait Timestampable
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      */
-    private $profession;
+    private $localisation;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -90,14 +90,14 @@ Trait Timestampable
         return $this;
     }
 
-    public function getProfession(): ?string
+    public function getLocalisation(): ?string
     {
-        return $this->profession;
+        return $this->localisation;
     }
 
-    public function setProfession(string $profession): self
+    public function setLocalisation(string $localisation): self
     {
-        $this->profession = $profession;
+        $this->localisation = $localisation;
 
         return $this;
     }

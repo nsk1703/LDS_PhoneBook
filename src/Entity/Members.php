@@ -42,10 +42,17 @@ class Members
      */
     private $imageName;
 
+
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
-    private $localisation;
+    private $profession;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function setImageFile(?File $imageFile = null): void
     {
@@ -75,17 +82,16 @@ class Members
         return $this;
     }
 
-    public function getLocalisation(): ?string
+    public function getProfession(): ?string
     {
-        return $this->localisation;
+        return $this->profession;
     }
 
-    public function setLocalisation(string $localisation): self
+    public function setProfession(string $profession): self
     {
-        $this->localisation = $localisation;
+        $this->profession = $profession;
 
         return $this;
     }
-
 
 }

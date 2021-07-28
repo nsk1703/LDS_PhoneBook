@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Member's list{% endblock %}
+{% block title %}Coordinator's list{% endblock %}
 
 {% block body %}
     {{ include('layouts/header_content/header_list_content.html.twig') }}
@@ -13,7 +13,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Information's List</h3>
-<a class="btn btn-outline-primary float-right" href="{{ path('app_member_create') }}">Add a member</a>
+                            <a class="btn btn-outline-primary float-right" href="{{ path('app_coordinator_create') }}">Add a coordinator</a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -24,25 +24,25 @@
                                     <th>LastName</th>
                                     <th>FirstName</th>
                                     <th>Phone Number</th>
-                                    <th>Profession</th>
+{#                                    <th>Profession</th>#}
                                     <th>Localisation</th>
-                                    <th>Email</th>
+{#                                    <th>Email</th>#}
                                     <th>InsertAt</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    {% for member in members %}
-                                        <tr data-href="{{ path('app_member_show', { id: member.id}) }}">
-                                            <td>{{ member.id }}</td>
-                                            <td>{{ member.lastName }}</td>
-                                            <td>{{ member.firstName }}</td>
-                                            <td>{{ member.phoneNumber }}</td>
-                                            <td>{{ member.profession }}</td>
-                                            <td>{{ member.localisation }}</td>
-                                            <td>{{ member.email }}</td>
-                                            <td>{{ member.createdAt|date("Y-m-d H:i:s") }}</td>
-                                        </tr>
-                                    {% endfor %}
+                                {% for coordinator in coordinators %}
+                                    <tr data-href="{{ path('app_coordinator_show', { id: coordinator.id}) }}">
+                                        <td>{{ coordinator.id }}</td>
+                                        <td>{{ coordinator.lastName }}</td>
+                                        <td>{{ coordinator.firstName }}</td>
+                                        <td>{{ coordinator.phoneNumber }}</td>
+{#                                        <td>{{ member.profession }}</td>#}
+                                        <td>{{ coordinator.localisation }}</td>
+{#                                        <td>{{ member.email }}</td>#}
+                                        <td>{{ coordinator.createdAt|date("Y-m-d H:i:s") }}</td>
+                                    </tr>
+                                {% endfor %}
                                 </tbody>
                                 <tfoot>
                                 <tr>
@@ -50,9 +50,9 @@
                                     <th>LastName</th>
                                     <th>FirstName</th>
                                     <th>Phone Number</th>
-                                    <th>Profession</th>
+{#                                    <th>Profession</th>#}
                                     <th>Localisation</th>
-                                    <th>Email</th>
+{#                                    <th>Email</th>#}
                                     <th>InsertAt</th>
                                 </tr>
                                 </tfoot>

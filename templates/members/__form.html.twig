@@ -1,6 +1,7 @@
-{{ form_start(form) }}
+{{ form_start(form, {'attr': {'id': 'allAddForm'}}) }}
 
     {{ form_widget(form) }}
 
-<input class="btn btn-success btn-block" type="submit" value="{{ submitButtonText|default('Add a Member') }}" formnovalidate>
+<input class="btn btn-success btn-block toastrDefaultSuccess" type="submit" id="submit"
+       value="{{ submitButtonText|default('Add a Member') }}" formnovalidate>
 {{ form_end(form) }}

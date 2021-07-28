@@ -14,18 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MembersController extends AbstractController
 {
     /**
-     * @Route("/", name="app_home")
-     * @param MembersRepository $membersRepository
-     * @return Response
-     */
-    public function index(MembersRepository $membersRepository): Response
-    {
-        $members = $membersRepository->findAll();
-        return $this->render('members/index.html.twig', ['members' => $members]);
-    }
-
-    /**
-     * @Route("/members/list", name="app_member_list", methods={"GET"})
+     * @Route("/members", name="app_member_list", methods={"GET"})
      * @param MembersRepository $membersRepository
      * @return Response
      */
