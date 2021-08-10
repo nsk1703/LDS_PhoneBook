@@ -11,14 +11,14 @@
     <section class="content mt-3">
         <div class="container">
             <!-- Small boxes (Stat box) -->
-            <div class="row">
-                <div class="col-lg-3 col-6">
+            <div class="row justify-content-center align-items-center" style="height: 50vh">
+                <div class="col-lg-4 col-6">
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>Members</h3>
+                            <h3>Membres</h3>
                             {% if(members|length > 0) %}
-                                <p>Numbers: {{ members|length }} </p>
+                                <p>Effectif: {{ members|length }} </p>
                             {% else %}
                                 <p><a href="{{ path('app_member_create') }}" style="color: inherit !important;">Add the first Member</a></p>
                             {% endif %}
@@ -28,11 +28,14 @@
                         </div>
                         <a href="{{ path('app_member_list') }}" class="small-box-footer">consulter la liste <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
+
+                </div>
+                <div class="col-lg-4 col-6">
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>Coordinators</h3>
+                            <h3>Coordonnateurs</h3>
                             {% if(coordinators|length > 0) %}
-                                <p>Numbers: {{ coordinators|length }} </p>
+                                <p>Effectif: {{ coordinators|length }} </p>
                             {% else %}
                                 <p><a href="{{ path('app_coordinator_create') }}" style="color: inherit !important;">Add the first Coordinator</a></p>
                             {% endif %}
@@ -43,8 +46,25 @@
                         <a href="{{ path('app_coordinator_list') }}" class="small-box-footer">consulter la liste <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div><!-- ./col -->
+{#                <div class="col-lg-4 col-6">#}
+{#                    <div class="small-box bg-success">#}
+{#                        <div class="inner">#}
+{#                            <h3>Coordonnateurs</h3>#}
+{#                            {% if(coordinators|length > 0) %}#}
+{#                                <p>Effectif: {{ coordinators|length }} </p>#}
+{#                            {% else %}#}
+{#                                <p><a href="{{ path('app_coordinator_create') }}" style="color: inherit !important;">Add the first Coordinator</a></p>#}
+{#                            {% endif %}#}
+{#                        </div>#}
+{#                        <div class="icon">#}
+{#                            <i class="ion ion-bag"></i>#}
+{#                        </div>#}
+{#                        <a href="{{ path('app_coordinator_list') }}" class="small-box-footer">consulter la liste <i class="fas fa-arrow-circle-right"></i></a>#}
+{#                    </div>#}
+{#                </div><!-- ./col -->#}
             </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+
+        </div><!-- /.container -->
     </section>
     <!-- /.header_content -->
 {% endblock %}

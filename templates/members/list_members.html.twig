@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Member's list{% endblock %}
+{% block title %}liste des Membres{% endblock %}
 
 {% block body %}
     {{ include('layouts/header_content/header_list_content.html.twig') }}
@@ -12,8 +12,8 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Information's List</h3>
-<a class="btn btn-outline-primary float-right" href="{{ path('app_member_create') }}">Add a member</a>
+                            <h3 class="card-title">Liste d'informations </h3>
+<a class="btn btn-outline-primary float-right" href="{{ path('app_member_create') }}">Ajouter un membre</a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -21,13 +21,13 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>LastName</th>
-                                    <th>FirstName</th>
-                                    <th>Phone Number</th>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>Téléphone</th>
                                     <th>Profession</th>
                                     <th>Localisation</th>
                                     <th>Email</th>
-                                    <th>InsertAt</th>
+                                    <th>Ajouté le</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -47,13 +47,13 @@
                                 <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>LastName</th>
-                                    <th>FirstName</th>
-                                    <th>Phone Number</th>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>Téléphone</th>
                                     <th>Profession</th>
                                     <th>Localisation</th>
                                     <th>Email</th>
-                                    <th>InsertAt</th>
+                                    <th>Ajouté le</th>
                                 </tr>
                                 </tfoot>
                             </table>

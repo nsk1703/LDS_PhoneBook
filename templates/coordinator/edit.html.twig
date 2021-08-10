@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Editing coordinator's{% endblock %}
+{% block title %} Modifier un coordonnateur{% endblock %}
 
 {% block body %}
     <!-- Content Header (Page header) -->
@@ -15,11 +15,11 @@
                     <!-- general form elements disabled -->
                     <div class="card card-primary">
                         <div class="card-header"  style="text-align: center">
-                            <h3 class="card-title">Updating of {{coordinator.lastname}} {{coordinator.firstname}}</h3>
+                            <h3 class="card-title">Modification du coordonnateur {{coordinator.lastname}} {{coordinator.firstname}}</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            {{ include('coordinator/_form.html.twig', {submitButtonText: 'Edit a coordinator'}) }}
+                            {{ include('coordinator/_form.html.twig', {submitButtonText: 'modifier un coordinateur'}) }}
                         </div>
                         <!-- /.card-body -->
                     </div>

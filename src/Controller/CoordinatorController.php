@@ -82,16 +82,21 @@ class CoordinatorController extends AbstractController
     }
 
     /**
+     * @param Request $request
+     * @param Coordinator $coordinator
+     * @param EntityManagerInterface $entityManager
      * @Route("/coordinator/{id<[0-9]+>}/delete", name="app_coordinator_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Coordinator $coordinator): Response
+    public function delete(Request $request, Coordinator $coordinator, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$coordinator->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
+        if ($this->isCsrfTokenValid('coordinator_deletion_'.$coordinator->getId(), $request->request->get('csrf_token')))
+        {
             $entityManager->remove($coordinator);
             $entityManager->flush();
+
+            $this->addFlash('info', 'Member successfully deleted!!');
         }
 
-        return $this->redirectToRoute('coordinator_index');
+        return $this->redirectToRoute('app_coordinator_list');
     }
 }

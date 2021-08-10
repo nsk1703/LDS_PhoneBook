@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Member's information {% endblock %}
+{% block title %}Information d'un Membre {% endblock %}
 
 
 {% block body %}
@@ -13,7 +13,7 @@
                 <div class="col-md-6">
                     <div class="card card-primary mt-2 mb-2">
                         <div class="card-header">
-                            <h3 class="card-title">Informations of {{ member.firstName }} {{ member.lastName }}</h3>
+                            <h3 class="card-title">Informations du membre {{ member.firstName }} {{ member.lastName }}</h3>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -22,26 +22,26 @@
                                 </div>
                                 <!-- /.col -->
                                 <div class="col-md-6">
-                                    <strong>Complete name</strong>
-                                    <p>{{ member.firstname }} {{ member.lastName }}</p>
-                                    <strong>Phone Number</strong>
-                                    <p>{{ member.phoneNumber }}</p>
-                                    <strong>Profession</strong>
-                                    <p>{{ member.profession }}</p>
-                                    <strong>Localisation</strong>
-                                    <p>{{ member.localisation }}</p>
-                                    <strong>Email</strong>
-                                    <p>{{ member.email }}</p>
+                                    <h6>Nom Complet</h6>
+                                    <p><strong>{{ member.firstname }} {{ member.lastName }}</strong></p>
+                                    <h6>Téléphone</h6>
+                                    <p><strong>{{ member.phoneNumber }}</strong></p>
+                                    <h6>Profession</h6>
+                                    <p><strong>{{ member.profession }}</strong></p>
+                                    <h6>Localisation</h6>
+                                    <p><strong>{{ member.localisation }}</strong></p>
+                                    <h6>Email</h6>
+                                    <p><strong>{{ member.email }}</strong></p>
                                 </div>
                                 <!-- /.col -->
                             </div>
                             <!-- /.row-->
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <a href="{{ path('app_member_edit', {id: member.id}) }}" style=" float:right;" class="btn btn-outline-primary">Update</a>
+                                    <a href="{{ path('app_member_edit', {id: member.id}) }}" style=" float:right;" class="btn btn-outline-primary">Modifier</a>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="#" class="btn btn-outline-danger" style="float:left;"onclick="event.preventDefault(); confirm('Are you sure?') && document.querySelector('#js-member-delete-form').submit();">Delete</a>
+                                    <a href="#" class="btn btn-outline-danger" style="float:left;"onclick="event.preventDefault(); confirm('Are you sure?') && document.querySelector('#js-member-delete-form').submit();">Supprimer</a>
 
                                     <form id="js-member-delete-form" action="{{path('app_member_delete', {id: member.id})}}" method="POST" style="display:none">
                                         <input type="hidden" name="csrf_token" value="{{csrf_token('member_deletion_' ~ member.id)}}">
