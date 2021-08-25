@@ -41,7 +41,8 @@
                                     <a href="{{ path('app_member_edit', {id: member.id}) }}" style=" float:right;" class="btn btn-outline-primary">Modifier</a>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="#" class="btn btn-outline-danger" style="float:left;"onclick="event.preventDefault(); confirm('Are you sure?') && document.querySelector('#js-member-delete-form').submit();">Supprimer</a>
+                                    <a class="btn btn-outline-danger" style="float:left;" onclick="event.preventDefault(); confirm('Are you sure?')
+                                    && document.querySelector('#js-member-delete-form').submit();">Supprimer</a>
 
                                     <form id="js-member-delete-form" action="{{path('app_member_delete', {id: member.id})}}" method="POST" style="display:none">
                                         <input type="hidden" name="csrf_token" value="{{csrf_token('member_deletion_' ~ member.id)}}">

@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+
+        <input class="btn btn-success mt-3 px-5 toastrDefaultSuccess" type="submit" id="submit"
+        value="{{ submitButtonText|default('Ajouter une Zone') }}" formnovalidate>
+   
+{{ form_end(form) }}

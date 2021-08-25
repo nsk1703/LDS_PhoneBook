@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Tableau de Bord{% endblock %}
 
 {% block body %}
     <!-- Content Header (Page header) -->
@@ -8,11 +8,11 @@
         {{ include('layouts/header_content/header_main_menu.html.twig') }}
     </section>
     <!-- Main content -->
-    <section class="content mt-3">
+    <section class="content m-3">
         <div class="container">
             <!-- Small boxes (Stat box) -->
             <div class="row justify-content-center align-items-center" style="height: 50vh">
-                <div class="col-lg-4 col-6">
+                <div class="col-lg-4 col-12">
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
@@ -20,48 +20,47 @@
                             {% if(members|length > 0) %}
                                 <p>Effectif: {{ members|length }} </p>
                             {% else %}
-                                <p><a href="{{ path('app_member_create') }}" style="color: inherit !important;">Add the first Member</a></p>
+                                <p><a href="{{ path('app_member_create') }}" style="color: inherit !important;">Ajoute le premier Membre</a></p>
                             {% endif %}
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <div class="icon">
+                                <i class="fas fa-users"></i>
+                            </div>
                         </div>
                         <a href="{{ path('app_member_list') }}" class="small-box-footer">consulter la liste <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
-
                 </div>
-                <div class="col-lg-4 col-6">
+                <div class="col-lg-4 col-12">
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>Coordonnateurs</h3>
+                            <h3>Coordonateurs</h3>
                             {% if(coordinators|length > 0) %}
                                 <p>Effectif: {{ coordinators|length }} </p>
                             {% else %}
-                                <p><a href="{{ path('app_coordinator_create') }}" style="color: inherit !important;">Add the first Coordinator</a></p>
+                                <p><a href="{{ path('app_coordinator_create') }}" style="color: inherit !important;">Ajoute le premier Coordonateur</a></p>
                             {% endif %}
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <div class="icon">
+                                <i class="fas fa-user"></i>
+                            </div>
                         </div>
                         <a href="{{ path('app_coordinator_list') }}" class="small-box-footer">consulter la liste <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div><!-- ./col -->
-{#                <div class="col-lg-4 col-6">#}
-{#                    <div class="small-box bg-success">#}
-{#                        <div class="inner">#}
-{#                            <h3>Coordonnateurs</h3>#}
-{#                            {% if(coordinators|length > 0) %}#}
-{#                                <p>Effectif: {{ coordinators|length }} </p>#}
-{#                            {% else %}#}
-{#                                <p><a href="{{ path('app_coordinator_create') }}" style="color: inherit !important;">Add the first Coordinator</a></p>#}
-{#                            {% endif %}#}
-{#                        </div>#}
-{#                        <div class="icon">#}
-{#                            <i class="ion ion-bag"></i>#}
-{#                        </div>#}
-{#                        <a href="{{ path('app_coordinator_list') }}" class="small-box-footer">consulter la liste <i class="fas fa-arrow-circle-right"></i></a>#}
-{#                    </div>#}
-{#                </div><!-- ./col -->#}
+                <div class="col-lg-4 col-12">
+                   <div class="small-box bg-danger">
+                       <div class="inner">
+                           <h3>Zones</h3>
+                           {% if(zones|length > 0) %}
+                               <p>Effectif: {{ zones|length }} </p>
+                           {% else %}
+                               <p><a href="{{ path('app_zone_create') }}" style="color: inherit !important;">Ajoute la première Zone</a></p>
+                           {% endif %}
+                           <div class="icon">
+                               <i class="fas fa-map-marker-alt"></i>
+                           </div>
+                       </div>
+                       <a href="{{ path('app_zone_list') }}" class="small-box-footer">consulter la liste <i class="fas fa-arrow-circle-right"></i></a>
+                   </div>
+                </div><!-- ./col -->
             </div><!-- /.row -->
 
         </div><!-- /.container -->

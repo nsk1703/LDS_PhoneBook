@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de zones{% endblock %}
+
+{% block body %}
+    {{ include('layouts/header_content/header_list_content.html.twig') }}
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container">
+            {% if(zones|length) > 0 %}
+            <div class="row">
+                <div class="col-md-12">
+                    <a class="btn btn-outline-danger float-center" href="{{ path('app_zone_create') }}">Ajouter un zone</a>
+                </div>
+            </div>
+            <div class="row mt-5">
+                {% for zone in zones %}
+                <div class="col-md-3 col-sm-6 col-12 dropdown-hover">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-danger"><i class="fas fa-map-marker-alt"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-number">{{ zone.zone }}</span>
+                            <span class="info-box-number">{{ zone.coordinator }}</span>
+                            <span class="info-box-number">93,139</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                    <span class="sr-only">Toggle Dropdown</span>
+                    <div class="dropdown-menu" role="menu">
+                        <a class="dropdown-item" href="{{ path('app_zone_show', {zone: zone.id}) }}">Détails</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ path('app_zone_edit', {id: zone.id}) }}">Modifier</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ path('app_zone_delete', {id: zone.id}) }}" class="dropdown-item" onclick="event.preventDefault();
+                            confirm('Are you sure?') && document.querySelector('#js-zone-delete-form').submit();"
+                        >Supprimer</a>
+                        <form id="js-zone-delete-form" action="{{path('app_zone_delete', {id: zone.id})}}" method="POST">
+                            <input type="hidden" name="csrf_token" value="{{csrf_token('zone_deletion_' ~ zone.id)}}">
+                            <input type="hidden" name="_method" value="DELETE">
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            {% else %}
+            <div class="row justify-content-center align-items-center" style="height: 50vh"">
+                <h1 class="text-secondary">Aucune zone enregistrée.</h1>
+                <a type="button" href="{{path('app_zone_create')}}"
+                class="btn btn-secondary m-3" style="text-decoration: none">Ajouter une zone</a>
+            </div>
+            {% endif %}
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+{% endblock %}

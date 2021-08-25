@@ -1,25 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Modifier un coordonnateur{% endblock %}
+{% block title %}Edit Zones{% endblock %}
 
 {% block body %}
     <!-- Content Header (Page header) -->
     <section class="content-header">
-{#        {{ include('layouts/header_content/header_edit-form_content.html.twig') }}#}
+        {{ include('layouts/header_content/header_add-form_content.html.twig') }}
     </section>
     <!-- Main content -->
-    <section class="content">
+    <section class="content mt-3">
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <!-- general form elements disabled -->
-                    <div class="card card-success">
+                    <div class="card card-danger">
                         <div class="card-header"  style="text-align: center">
-                            <h3 class="card-title">Modification du coordonnateur {{coordinator.lastname}} {{coordinator.firstname}}</h3>
+                            <h3 class="card-title">Modification de la zone de {{ zone.zone }}</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            {{ include('coordinator/_form.html.twig', {submitButtonText: 'modifier un coordinateur'}) }}
+                            {{ include('zones/_form.html.twig', {submitButtonText: 'modifier une zone'}) }}
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -31,4 +31,6 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+
+
 {% endblock %}

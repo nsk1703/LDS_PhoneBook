@@ -40,6 +40,8 @@ class CoordinatorController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+           $coordinator->setFullName($coordinator->getLastName(), $coordinator->getFirstName());
+
             $entityManager->persist($coordinator);
             $entityManager->flush();
 

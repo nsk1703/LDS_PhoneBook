@@ -5,7 +5,8 @@ namespace App\Entity\Traits;
 
 
 use Doctrine\ORM\Mapping as ORM;
-use PhpParser\Builder\Trait_;
+use PhpParser\Builder\TraitUse;
+use Symfony\Component\Validator\Constraints as Assert;
 
 Trait Timestampable
 {
@@ -20,6 +21,11 @@ Trait Timestampable
      * @Assert\NotBlank
      */
     private $last_name;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $full_name;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -74,6 +80,18 @@ Trait Timestampable
     public function setLastName(string $last_name): self
     {
         $this->last_name = $last_name;
+
+        return $this;
+    }
+
+    public function getFullName(): ?string
+    {
+        return $this->full_name;
+    }
+
+    public function setFullName(string $last_name, string $first_name): self
+    {
+        $this->full_name = $last_name. ' ' . $first_name;
 
         return $this;
     }

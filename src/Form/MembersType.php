@@ -3,7 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Members;
+use App\Entity\Zones;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -20,12 +24,36 @@ class MembersType extends AbstractType
                 'download_uri' => false,
                'imagine_pattern' => 'squared_thumbnail_small',
             ])
-            ->add('first_name')
-            ->add('last_name')
-            ->add('phone_number')
-            ->add('profession')
-            ->add('localisation')
-            ->add('email')
+            ->add('first_name', TextType::class, [
+                'attr' => array('class' => 'form-control'),
+                'label' => 'Prénom'
+            ])
+            ->add('last_name', TextType::class, [
+                'attr' => array('class' => 'form-control'),
+                'label' => 'Nom'
+            ])
+            ->add('phone_number', TextType::class, [
+                'attr' => array('class' => 'form-control'),
+                'label' => 'Numéro de Téléphone'
+            ])
+            ->add('profession', TextType::class, [
+                'attr' => array('class' => 'form-control'),
+                'label' => 'Profession'
+            ])
+            ->add('localisation', TextType::class, [
+                'attr' => array('class' => 'form-control'),
+                'label' => 'Localisation'
+            ])
+            ->add('zones', EntityType::class, [
+                'class' => Zones::class,
+                'choice_label' => 'zone',
+                'label' => 'Zone',
+                'multiple' => false
+            ])
+            ->add('email', TextType::class, [
+                'attr' => array('class' => 'form-control'),
+                'label' => 'Adresse mail'
+            ])
         ;
     }
 

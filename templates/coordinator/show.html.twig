@@ -11,9 +11,9 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <div class="card card-primary mt-2 mb-2">
+                    <div class="card card-success mt-2 mb-2">
                         <div class="card-header">
-                            <h3 class="card-title">Informations du coordonnateur {{ coordinator.firstName }} {{ coordinator.lastName }}</h3>
+                            <h3 class="card-title">Informations du coordonateur {{ coordinator.firstName }} {{ coordinator.lastName }}</h3>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -48,7 +48,8 @@
                                     <a href="{{ path('app_coordinator_edit', {id: coordinator.id}) }}" style=" float:right;" class="btn btn-outline-primary">Modifier</a>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="#" class="btn btn-outline-danger" style="float:left;"onclick="event.preventDefault(); confirm('Are you sure?') && document.querySelector('#js-member-delete-form').submit();">Supprimer</a>
+                                    <a class="btn btn-outline-danger" style="float:left;" onclick="event.preventDefault(); confirm('Are you sure?')
+                                    && document.querySelector('#js-member-delete-form').submit();">Supprimer</a>
 
                                     <form id="js-member-delete-form" action="{{path('app_coordinator_delete', {id: coordinator.id})}}" method="POST" style="display:none">
                                         <input type="hidden" name="csrf_token" value="{{csrf_token('coordinator_deletion_' ~ coordinator.id)}}">

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Members;
+use App\Entity\Zones;
 use App\Form\MembersType;
 use App\Repository\MembersRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -39,6 +40,8 @@ class MembersController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
+            $member->setFullName($member->getLastName(), $member->getFirstName());
+
             $entityManager->persist($member);
             $entityManager->flush();
 

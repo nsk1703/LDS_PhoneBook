@@ -49,6 +49,12 @@ class Members
      */
     private $profession;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Zones::class, inversedBy="Members")
+     * @ORM\JoinColumn(name="zone_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     */
+    private $zones;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +96,18 @@ class Members
     public function setProfession(string $profession): self
     {
         $this->profession = $profession;
+
+        return $this;
+    }
+
+    public function getZones(): ?Zones
+    {
+        return $this->zones;
+    }
+
+    public function setZones(?Zones $zones): self
+    {
+        $this->zones = $zones;
 
         return $this;
     }

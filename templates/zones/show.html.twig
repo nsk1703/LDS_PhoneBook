@@ -1,10 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste de coordonnateurs{% endblock %}
+{% block title %}Zones{% endblock %}
 
 {% block body %}
-    {{ include('layouts/header_content/header_list_content.html.twig') }}
-
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -12,8 +10,8 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Liste d'informations</h3>
-                            <a class="btn btn-outline-success float-right" href="{{ path('app_coordinator_create') }}">Ajouter un coordonnateur</a>
+                            <h3 class="card-title">Liste d'informations </h3>
+{#                            <a class="btn btn-outline-primary float-right" href="{{ path('app_zone_create') }}">Ajouter un membre</a>#}
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -21,46 +19,39 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Prénom</th>
                                     <th>Nom</th>
+                                    <th>Prénom</th>
                                     <th>Téléphone</th>
-{#                                    <th>Profession</th>#}
+                                    <th>Profession</th>
                                     <th>Localisation</th>
                                     <th>Email</th>
                                     <th>Ajouté le</th>
-{#                                    <th>Modifié le</th>#}
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for coordinator in coordinators %}
-{#                                    {{ dump(coordinator) }}#}
-                                    <tr data-href="{{ path('app_coordinator_show', { id: coordinator.id}) }}">
-                                        <td>{{ coordinator.id }}</td>
-                                        <td>{{ coordinator.firstName }}</td>
-                                        <td>{{ coordinator.lastName }}</td>
-                                        <td>{{ coordinator.phoneNumber }}</td>
-{#                                        <td>{{ member.profession }}</td>#}
-                                        <td>{{ coordinator.localisation }}</td>
-                                        {% if(coordinator.email) %}
-                                            <td>{{ coordinator.email }}</td>
-                                        {% else %}
-                                            <td>Pas d'email</td>
-                                        {% endif %}
-                                        <td>{{ coordinator.createdAt|date("Y-m-d H:i:s") }}</td>
+                                {% for member in members %}
+                                    <tr data-href="{{ path('app_member_show', { id: member.id}) }}">
+                                        <td>{{ member.id }}</td>
+                                        <td>{{ member.lastName }}</td>
+                                        <td>{{ member.firstName }}</td>
+                                        <td>{{ member.phoneNumber }}</td>
+                                        <td>{{ member.profession }}</td>
+                                        <td>{{ member.localisation }}</td>
+                                        <td>{{ member.email }}</td>
+                                        <td>{{ member.createdAt|date("Y-m-d H:i:s") }}</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
                                 <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Prénom</th>
                                     <th>Nom</th>
+                                    <th>Prénom</th>
                                     <th>Téléphone</th>
-{#                                    <th>Profession</th>#}
+                                    <th>Profession</th>
                                     <th>Localisation</th>
                                     <th>Email</th>
                                     <th>Ajouté le</th>
-{#                                    <th>InsertAt</th>#}
                                 </tr>
                                 </tfoot>
                             </table>
