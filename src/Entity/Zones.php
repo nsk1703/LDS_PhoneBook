@@ -31,12 +31,13 @@ class Zones
 
     /**
      * @ORM\ManyToOne(targetEntity=Coordinator::class, inversedBy="zone")
-     * @ORM\JoinColumn(name="coordinator_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     * @ORM\JoinColumn(name="coordinator_id", referencedColumnName="id", nullable=false, onDelete="SET NULL")
      */
     private $coordinator;
 
     /**
      * @ORM\OneToMany(targetEntity=Members::class, mappedBy="zones")
+     * @ORM\JoinColumn(name="member_id", referencedColumnName="id", nullable=false)
      */
     private $Members;
 
@@ -117,4 +118,8 @@ class Zones
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->getZone();
+    }
 }

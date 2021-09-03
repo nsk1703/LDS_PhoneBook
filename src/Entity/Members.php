@@ -112,4 +112,9 @@ class Members
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->getFullName();
+    }
+
 }

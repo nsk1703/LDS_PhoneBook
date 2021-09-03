@@ -44,19 +44,19 @@
     <body class="hold-transition sidebar-mini sidebar-collapse">
         <!-- Site wrapper -->
         <div class="wrapper">
-            {{ include('layouts/fix_content/_nav.html.twig') }}
-            {{ include('layouts/fix_content/_aside.html.twig') }}
+            {{ include('_layouts/fix_content/_nav.html.twig') }}
+            {{ include('_layouts/fix_content/_aside.html.twig') }}
 
-            <!-- Content Wrapper. Contains page header_content -->
+            <!-- Content Wrapper. Contains page header_members_content -->
             <div class="content-wrapper">
-{#                {{ include('layouts/_flash_message.html.twig') }}#}
+{#                {{ include('_layouts/_flash_message.html.twig') }}#}
                 {% block body %}
 
                 {% endblock %}
             </div>
-            <!-- /.header_content-wrapper -->
+            <!-- /.header_members_content-wrapper -->
 
-            {{ include('layouts/fix_content/_footer.html.twig') }}
+            {{ include('_layouts/fix_content/_footer.html.twig') }}
         </div>
         <!-- ./wrapper -->
 

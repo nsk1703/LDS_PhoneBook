@@ -3,7 +3,7 @@
 {% block title %}Liste de zones{% endblock %}
 
 {% block body %}
-    {{ include('layouts/header_content/header_list_content.html.twig') }}
+    {{ include('_layouts/header_zone_content/header_list_content.html.twig') }}
 
     <!-- Main content -->
     <section class="content">
@@ -14,15 +14,27 @@
                     <a class="btn btn-outline-danger float-center" href="{{ path('app_zone_create') }}">Ajouter un zone</a>
                 </div>
             </div>
+            {% for row in zones|batch(4) %}
             <div class="row mt-5">
-                {% for zone in zones %}
+                {% for zone in row %}
+{#                    {{ dump(zone) }}#}
                 <div class="col-md-3 col-sm-6 col-12 dropdown-hover">
                     <div class="info-box">
                         <span class="info-box-icon bg-danger"><i class="fas fa-map-marker-alt"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-number">{{ zone.zone }}</span>
+                            {% if(zone.coordinator == null) %}
+                            <span class="info-box-number">Aucun coordonateur!</span>
+                            {% else %}
                             <span class="info-box-number">{{ zone.coordinator }}</span>
-                            <span class="info-box-number">93,139</span>
+                             {% endif %}
+                            {% if(zone.members|length > 1) %}
+                            <span class="info-box-number">Nbres: {{ zone.members|length }}</span>
+                            {% elseif (zone.members|length == 1) %}
+                            <span class="info-box-number">Nbre: {{ zone.members|length }}</span>
+                            {% else %}
+                            <span class="info-box-number">Aucun membre!</span>
+                            {% endif %}
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -33,11 +45,12 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ path('app_zone_edit', {id: zone.id}) }}">Modifier</a>
                         <div class="dropdown-divider"></div>
-                        <a href="{{ path('app_zone_delete', {id: zone.id}) }}" class="dropdown-item" onclick="event.preventDefault();
-                            confirm('Are you sure?') && document.querySelector('#js-zone-delete-form').submit();"
+                        <a class="dropdown-item"
+                           onclick="event.preventDefault();
+                            confirm('Are you sure? You want to delete {{ zone.id }}') && document.querySelector('#js-zone-delete-form').submit();"
                         >Supprimer</a>
-                        <form id="js-zone-delete-form" action="{{path('app_zone_delete', {id: zone.id})}}" method="POST">
-                            <input type="hidden" name="csrf_token" value="{{csrf_token('zone_deletion_' ~ zone.id)}}">
+                        <form id="js-zone-delete-form" action="{{path('app_zone_delete', {id: zone.id})}}" method="POST" style="display: none">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token('zone_deletion_' ~ zone.id) }}">
                             <input type="hidden" name="_method" value="DELETE">
                         </form>
                     </div>
@@ -46,8 +59,9 @@
                 <!-- /.col -->
             </div>
             <!-- /.row -->
+            {% endfor %}
             {% else %}
-            <div class="row justify-content-center align-items-center" style="height: 50vh"">
+            <div class="row justify-content-center align-items-center" style="height: 50vh">
                 <h1 class="text-secondary">Aucune zone enregistrée.</h1>
                 <a type="button" href="{{path('app_zone_create')}}"
                 class="btn btn-secondary m-3" style="text-decoration: none">Ajouter une zone</a>

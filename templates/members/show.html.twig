@@ -4,7 +4,7 @@
 
 
 {% block body %}
-    {{ include('layouts/header_content/header_show_content.html.twig') }}
+    {{ include('_layouts/header_members_content/header_show_content.html.twig') }}
 
     <!-- Main content -->
     <section class="content">
@@ -30,6 +30,9 @@
                                     <p><strong>{{ member.profession }}</strong></p>
                                     <h6>Localisation</h6>
                                     <p><strong>{{ member.localisation }}</strong></p>
+                                    <h6>Zone</h6>
+{#                                    {% if %}#}
+                                    <p><strong>{{ member.zones }}</strong></p>
                                     <h6>Email</h6>
                                     <p><strong>{{ member.email }}</strong></p>
                                 </div>

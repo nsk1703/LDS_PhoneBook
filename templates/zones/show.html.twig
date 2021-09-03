@@ -3,6 +3,9 @@
 {% block title %}Zones{% endblock %}
 
 {% block body %}
+
+    {{ include('_layouts/header_zone_content/header_show_content.html.twig') }}
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -10,7 +13,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Liste d'informations </h3>
+                            <h3 class="card-title">Liste d'informations de la zone de {{ zone.zone }}</h3>
 {#                            <a class="btn btn-outline-primary float-right" href="{{ path('app_zone_create') }}">Ajouter un membre</a>#}
                         </div>
                         <!-- /.card-header -->

@@ -20,11 +20,8 @@ class ZonesController extends AbstractController
      */
     public function index(ZonesRepository $zonesRepository): Response
     {
-        $zone = new Zones();
-        $members = $zone->getMembers();
         return $this->render('zones/list_zones.html.twig', [
             'zones' => $zonesRepository->findAll(),
-
         ]);
     }
 
@@ -84,6 +81,10 @@ class ZonesController extends AbstractController
     }
 
     /**
+     * @param Request $request
+     * @param Zones $zone
+     * @param EntityManagerInterface $entityManager
+     * @return Response
      * @Route("/zone/{id<[0-9]+>}/delete", name="app_zone_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Zones $zone, EntityManagerInterface $entityManager): Response
