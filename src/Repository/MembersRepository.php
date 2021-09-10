@@ -34,16 +34,16 @@ class MembersRepository extends ServiceEntityRepository
         ;
     }
 
-//    public function totalMemberByZone($zone)
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->where('m.zones = :zone')
-//            ->setParameter('zone', $zone)
+    public function MemberById($id)
+    {
+        return $this->createQueryBuilder('m')
+            ->where('m.id = :id')
+            ->setParameter('id', $id)
 //            ->orderBy('m.zones', 'ASC')
-//            ->getQuery()
-//            ->getResult()
-//            ;
-//    }
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
 
 
     /*

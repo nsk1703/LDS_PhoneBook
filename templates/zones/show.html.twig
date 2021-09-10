@@ -13,7 +13,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Liste d'informations de la zone de {{ zone.zone }}</h3>
+                            <h3 class="card-title">Liste des membres de la zone de {{ zone.zone }}</h3>
 {#                            <a class="btn btn-outline-primary float-right" href="{{ path('app_zone_create') }}">Ajouter un membre</a>#}
                         </div>
                         <!-- /.card-header -->
@@ -33,7 +33,7 @@
                                 </thead>
                                 <tbody>
                                 {% for member in members %}
-                                    <tr data-href="{{ path('app_member_show', { id: member.id}) }}">
+                                    <tr data-href="{{ path('app_zone_members', { zone: zone.id, member: member.id }) }}">
                                         <td>{{ member.id }}</td>
                                         <td>{{ member.lastName }}</td>
                                         <td>{{ member.firstName }}</td>

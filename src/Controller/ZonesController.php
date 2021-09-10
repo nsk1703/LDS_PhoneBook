@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Members;
 use App\Entity\Zones;
 use App\Form\ZonesType;
 use App\Repository\MembersRepository;
@@ -57,6 +58,18 @@ class ZonesController extends AbstractController
         return $this->render('zones/show.html.twig', [
             'zone' => $zone,
             'members' => $members
+        ]);
+    }
+
+    /**
+     * @Route("/zone/{zone<[0-9]+>}/member/{member<[0-9]+>}", name="app_zone_members", methods={"GET"})
+     */
+    public function MemberDetailsByZone(Zones $zone,MembersRepository $membersRepository, Members $member): Response
+    {
+        $member = $membersRepository->MemberById($member);
+        return $this->render('zones/zone_member_detail.html.twig', [
+            'zone' => $zone,
+            'member' => $member
         ]);
     }
 

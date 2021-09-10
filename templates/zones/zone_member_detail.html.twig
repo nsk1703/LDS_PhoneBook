@@ -1,23 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Information d'un Membre {% endblock %}
+{% block title %}Information des Membres de la zone de {{ zone.zone}} {% endblock %}
 
 
 {% block body %}
-    {{ include('_layouts/header_members_content/header_show_content.html.twig') }}
+{#    {{ include('_layouts/header_members_content/header_show_content.html.twig') }}#}
 
     <!-- Main content -->
     <section class="content">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
+{#                    {{ dump('member',member, 'zone', zone) }}#}
                     <div class="card card-primary mt-2 mb-2">
                         <div class="card-header">
-                            <h3 class="card-title">Informations du membre {{ member.firstName }} {{ member.lastName }}</h3>
+                            <h3 class="card-title">Informations du membre {{ member.fullName }}</h3>
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6">
                                     <img src="{{vich_uploader_asset(member) | imagine_filter('squared_thumbnail_small')}}" alt="{{member.lastName}}">
                                 </div>
                                 <!-- /.col -->
@@ -32,9 +33,9 @@
                                     <p><strong>{{ member.localisation }}</strong></p>
                                     <h6>Zone</h6>
                                     {% if (member.zones) %}
-                                        <p><strong>{{ member.zones }}</strong></p>
+                                    <p><strong>{{ member.zones }}</strong></p>
                                     {% else %}
-                                        <p><strong>zone non enregistré</strong></p>
+                                    <p><strong>zone non enregistré</strong></p>
                                     {% endif %}
                                     <h6>Email</h6>
                                     <p><strong>{{ member.email }}</strong></p>
@@ -42,20 +43,15 @@
                                 <!-- /.col -->
                             </div>
                             <!-- /.row-->
-                            <div class="row mt-3 justify-content-center align-items-center">
-{#                                <div class="col-md-6">#}
-                                    <a href="{{ path('app_member_edit', {id: member.id}) }}"
-{#                                       style="float: left;" #}
-                                       class="btn btn-outline-primary mx-3">Modifier</a>
-{#                                </div>#}
-{#                                <div class="col-md-6">#}
-                                    <a href="#" class="btn btn-outline-danger"
-{#                                       style="float: right;"#}
-                                       onclick="event.preventDefault(); confirm('Are you sure?')
-                                    && document.querySelector('#js-member-delete-form').submit();"
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <a href="{{ path('app_member_edit', {id: member.id}) }}" style=" float:right;" class="btn btn-outline-primary">Modifier</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="btn btn-outline-danger" style="float:left;" onclick="event.preventDefault(); confirm('Are you sure?')
+                                        && document.querySelector('#js-member-delete-form').submit();"
                                     >Supprimer</a>
-
-                                    <form id="js-member-delete-form" action="{{path('app_member_delete', {id: member.id})}}" method="POST" style="display:none">
+                                    <form id="js-member-delete-form" action="{{ path('app_member_delete', {id: member.id}) }}" method="POST" style="display:none">
                                         <input type="hidden" name="csrf_token" value="{{csrf_token('member_deletion_' ~ member.id)}}">
                                         <input type="hidden" name="_method" value="DELETE">
                                     </form>

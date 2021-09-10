@@ -22,7 +22,7 @@ class MembersType extends AbstractType
                 'required' => false,
                 'allow_delete' => true, //Autorisation de la suppression de l'image lors de la modification
                 'download_uri' => false,
-               'imagine_pattern' => 'squared_thumbnail_small',
+                'imagine_pattern' => 'squared_thumbnail_small',
             ])
             ->add('first_name', TextType::class, [
                 'attr' => array('class' => 'form-control'),
